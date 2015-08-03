@@ -14,3 +14,7 @@ To use this script:
 All imported packages include dependancy and version information. The script will also attempt to find a subset of files installed by each package and add them to an `installs` array; this helps Munki determine if a package is really installed or not -- it also helps with some troublesome packages that don't handle version numbers in a sane way.
 
 After the import is complete, a list of package names imported will be left in the file `/tmp/import-manifest`. This file should be inserted into a real Munki manifest so that your packages are actually installed on machines.
+
+## Known issues
+
+ * Importing the same port a seconf time using the `--port` option will result in a second copy of the package being imported into the repo. Avoid doing this. (Automatic "import all" runs will not re-import an existing port.)

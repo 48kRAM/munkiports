@@ -1,21 +1,33 @@
 #!/usr/bin/perl
 use File::Glob qw(:globally :nocase);
 use Data::Dumper;
+use Getopt::Long;
+
+sub print_help();
 
 $osversion=`sw_vers -productVersion`;
 chomp($osversion);
 @os_version=split(/\./, $osversion);
 
-$DEBUG=1;
-$BASE=sprintf("ports%d%d", $os_version[0], $os_version[1]);
-printf("Port base is '%s'\n", $BASE);
+$DEBUG=0;
 
 $INFOS="/Volumes/munki/pkgsinfo/$BASE";
 $PKGS="/Volumes/munki/pkgs/$BASE";
 
-# Check to repack only specific port
-($specific) = @ARGV;
-if ($specific ne '') {
+## Check command line options
+
+GetOptions(
+    "repo|r=s"		=> \$munki_repo,
+    "port|p=s"		=> \$specific,
+    "manifest|m=s"	=> \$manifest_file,
+    "debug|d"		=> \$DEBUG,
+) or print_help();
+
+$BASE=sprintf("ports%d%d", $os_version[0], $os_version[1]);
+printf("Port base is '%s'\n", $BASE) if ($DEBUG);
+
+## Check to repack only specific port
+if ($specific && $specific ne '') {
     print "Importing port $specific\n";
     open(PORTLIST, "/opt/local/bin/port installed 2>/dev/null | grep '^ *$specific ' |") or die "Can't list port $specific\n";
 } else {
@@ -23,6 +35,9 @@ if ($specific ne '') {
 }
 
 open(MANIFEST, ">/tmp/import-manifest" ) || die ("Can't write manifest\n");
+
+# List of packages imported
+@packages=();
 
 while (<PORTLIST>) {
     chomp();
@@ -95,8 +110,15 @@ while (<PORTLIST>) {
 	$jobout=system("/usr/local/munki/munkiimport -n $importargs $portpkg");
     }
     die("munkiimport failed!\n") if ($jobout>0);
+    push (@packages, $munkiname);
+
+    # Add packages to the configured manifest
     printf MANIFEST "\t\t<string>%s</string>\n", $munkiname;
+    if ($manifest_file) {
+	$jobout=system("/usr/local/munki/manifestutil add-pkg $munkiname --manifest $manifest_file");
+    }
 }
+
 
 ###################################################################################
 
@@ -166,4 +188,20 @@ sub find_port_files ($) {
 	}
     }
     return (@portfiles);
+}
+
+########################
+
+sub print_help () {
+
+    my $helptext = << "EOH";
+Usage: import-macports [options]
+
+    -r|--repo		Path to munki repository
+    -p|--port		Import only this port (default is to import all active ports)
+    -m|--manifest	Add imported ports to this manifest file (full path)
+
+EOH
+    print ($helptext);
+    exit 1;
 }
