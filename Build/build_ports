@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PORTSLIST='portslist'
+
+if [ -r "$PORTSLIST" ]; then
+    cat "$PORTSLIST" | while read portspec ; do
+    	port install $portspec
+	if [ $? -ne 0 ] ; then
+	    echo "Error building port spec $portspec"
+	    exit $?
+	fi
+    done
+else
+    echo "Error reading Ports list '$PORTSLIST'"
+    exit 1
+fi

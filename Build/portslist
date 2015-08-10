@@ -1,0 +1,445 @@
+ImageMagick  +x11 
+dbus +startupitem 
+git  +credential_osxkeychain  +doc  +pcre  +perl5_16  +python27 
+alpine  +without_krb5  +without_tcl 
+aspell  +nonls -nls
+boost  +no_single  +no_static  +python27 
+curl  +ssl 
+cyrus-sasl2  +kerberos 
+diffuse   +python27 
+gdk-pixbuf2
+ghostscript
+giflib
+gnome-doc-utils  +python27 
+gnuplot   +aquaterm  +luaterm  +pangocairo  +wxwidgets  +x11 
+gpg-agent   +pinentry 
+graphviz   +pangocairo  +x11 
+gtk-doc   +python27 
+gtk2 -quartz +x11
+gtk3 -quartz +x11
+gtkmm
+gtkspell2
+inkscape  +python27  +x11 
+mesa  +python27 
+pango  +quartz  +x11 
+py27-aplpy  +avm +ds9 +montage +rgb 
+py27-atpy  +ascii +fits +hdf5 +vo 
+py27-ipython  +notebook +parallel +scientific 
+py27-matplotlib   +cairo +tkinter 
+py27-pygtk   +x11 
+py34-aplpy  +avm +ds9 +rgb 
+py34-ipython   +notebook +parallel 
+py34-matplotlib   +cairo +tkinter 
+tcl   +corefoundation +threads 
+webkit-gtk3-2.0   +video 
+wget  +ssl 
+ImageMagick   +x11 
+SuiteSparse  
+Xaw3d  
+Xft2  
+XviD  
+a2ps  
+a52dec  
+aacgain  
+aalib  
+alpine   +without_krb5  +without_tcl 
+apr  
+apr-util  
+aquaterm  
+arj  
+aspell   +nonls -nls
+aspell-dict-en  
+atk  
+atkmm  
+atlas
+audiofile  
+autoconf  
+automake  
+backward  
+bison  
+boehmgc  
+boost   +no_single  +no_static  +python27 
+boost-jam  
+bsdmake  
+bvi  
+bzip2  
+c-ares  
+cabextract  
+cctools-headers  
+cdrtools  
+cfitsio  
+chef  
+cloog  
+cmake  
+compface  
+coreutils  
+cowsay  
+cppunit  
+curl   +ssl 
+curl-ca-bundle  
+cvs  
+cyrus-sasl2   +kerberos 
+dbus   +startupitem 
+dbus-glib  
+dbus-python27  
+desktop-file-utils  
+detex  
+diffuse   +python27 
+dirac  
+djvulibre  
+docbook-xml  
+docbook-xsl  
+dos2unix  
+dvdauthor  
+eggdbus  
+emacs  
+enca  
+enchant  
+esound  
+expat  
+faac  
+faad2  
+fftw
+fftw-3  
+fftw-3-single  
+fftw-single
+file  
+findutils  
+flac  
+flex  
+fontconfig  
+fop  
+fortune  
+freefont-ttf  
+freetype  
+fribidi  
+gawk  
+gcc49  
+gd2  
+gdbm  
+gdk-pixbuf2   +x11 
+geoclue  
+geoclue2  
+getopt  
+gettext  
+ghostscript   +x11 
+giflib   +x11 
+gifsicle  
+git   +credential_osxkeychain  +doc  +pcre  +perl5_16  +python27 
+glib2  
+glibmm  
+glpk  
+gmake  
+gmp  
+gnome-common  
+gnome-doc-utils   +python27 
+gnome-mime-data  
+gnome-vfs  
+gnupg  
+gnupg2  
+gnuplot   +aquaterm  +luaterm  +pangocairo  +wxwidgets  +x11 
+gnutls  
+gperf  
+gpg-agent   +pinentry 
+gpgme  
+graphite2  
+graphviz   +pangocairo  +x11 
+groff  
+gsed  
+gsl  
+gstreamer1-gst-plugins-base
+gtk-doc   +python27 
+gtk1  
+gtkmm   +x11 
+gtkspell2   +x11 
+gts  
+gv  
+gzip  
+harfbuzz  
+harfbuzz-icu  
+hdf5
+help2man  
+hicolor-icon-theme  
+hunspell  
+icecast2  
+id3lib  
+id3tool  
+id3v2  
+imake  
+imlib2  
+inkscape   +python27  +x11 
+intltool  
+isl  
+iso-codes  
+itstool  
+jasper  
+jbig2dec  
+jbigkit  
+jpeg  
+json-glib  
+kerberos5  
+lame  
+latexdiff  
+lcms  
+lcms2  
+lha  
+libLASi  
+libao  
+libarchive  
+libart_lgpl  
+lifelines  
+lua  
+lzmautils  
+lzo  
+lzo2  
+m4  
+madplay  
+makedepend  
+mercurial  
+mesa   +python27 
+metis  
+mikmod  
+mm-common  
+montage  
+mp3info  
+mp3splt  
+mp4v2  
+mpfr  
+multitail  
+mysql5  
+ncdu  
+ncurses  
+neon  
+netcdf
+netpbm  
+nettle  
+nmap  
+normalize  
+nspr  
+ogmtools  
+opencdk  
+openexr  
+openjade  
+openjpeg  
+openldap  
+openmotif  
+opensp  
+openssl  
+orbit2  
+orc  
+ossp-uuid  
+osxfuse  
+p11-kit  
+p5.16-algorithm-diff  
+p5.16-authen-sasl  
+p5.16-convert-asn1  
+p5.16-digest-hmac  
+p5.16-digest-md5  
+p5.16-digest-sha1  
+p5.16-encode  
+p5.16-error  
+p5.16-gssapi  
+p5.16-io-socket-ssl  
+p5.16-locale-gettext  
+p5.16-mime-base64  
+p5.16-net-libidn  
+p5.16-net-smtp-ssl  
+p5.16-net-ssleay  
+p5.16-perl-ldap  
+p5.16-term-readkey  
+p5.16-uri  
+p5.16-xml-filter-buffertext  
+p5.16-xml-namespacesupport  
+p5.16-xml-parser  
+p5.16-xml-sax-base  
+p5.16-xml-sax-writer  
+p7zip  
+pango   +quartz  +x11 
+pangox-compat  
+pcre  
+pdflib  
+pdftk
+perl5.16  
+pgplot
+pinentry  
+pkgconfig  
+policykit  
+poppler  
+poppler-data  
+popt  
+ppl  
+ps2eps  
+psutils  
+pth  
+pwgen  
+py-ipython  
+py27-altgraph  
+py27-aplpy  +avm +ds9 +montage +rgb 
+py27-asciitable  
+py27-astropy  
+py27-atpy  +ascii +fits +hdf5 +vo 
+py27-backports  
+py27-bdist_mpkg  
+py27-beaker  
+py27-cairo  
+py27-certifi  
+py27-configobj  
+py27-cython  
+py27-dateutil  
+py27-distribute  
+py27-docutils  
+py27-gobject  
+py27-h5py  
+py27-ipython  +notebook +parallel +scientific 
+py27-jinja2  
+py27-libxml2  
+py27-lxml  
+py27-macholib  
+py27-mako  
+py27-markupsafe  
+py27-matplotlib   +cairo +tkinter 
+py27-modulegraph  
+py27-montage  
+py27-nose  
+py27-numpy  
+py27-parsing  
+py27-pil  
+py27-pip  
+py27-py  
+py27-py2app  
+py27-pyavm  
+py27-pyfits  
+py27-pygments  
+py27-pygtk   +x11 
+py27-pyobjc  
+py27-pyobjc-cocoa  
+py27-pyregion  
+py27-pyrex  
+py27-pywcs  
+py27-readline  
+py27-requests  
+py27-roman  
+py27-scientific  
+py27-scipy
+py27-setuptools  
+py27-six  
+py27-sphinx  
+py27-tkinter  
+py27-tornado  
+py27-tz  
+py27-virtualenv  
+py27-vo  
+py27-zmq  
+py34-Pillow  
+py34-altgraph  
+py34-aplpy  +avm +ds9 +rgb 
+py34-astropy  
+py34-cairo  
+py34-certifi  
+py34-cython  
+py34-dateutil  
+py34-docutils  
+py34-gobject  
+py34-h5py  
+py34-ipython   +notebook +parallel 
+py34-jinja2  
+py34-libxml2  
+py34-lxml  
+py34-macholib  
+py34-markupsafe  
+py34-matplotlib   +cairo +tkinter 
+py34-modulegraph  
+py34-nose  
+py34-numpy  
+py34-parsing  
+py34-py  
+py34-py2app  
+py34-pyavm  
+py34-pyfits  
+py34-pygments  
+py34-pyobjc  
+py34-pyobjc-cocoa  
+py34-pyregion  
+py34-readline  
+py34-requests  
+py34-roman  
+py34-scipy
+py34-setuptools  
+py34-six  
+py34-sphinx  
+py34-tkinter  
+py34-tornado  
+py34-tz  
+py34-virtualenv  
+py34-zmq  
+python27  
+python34  
+python_select  
+rarian  
+rcs  
+readline  
+renameutils  
+rlwrap  
+rsync  
+schroedinger  
+scons  
+serf1  
+shared-mime-info  
+smake  
+source-highlight  
+sox  
+speex  
+sphinx_select  
+sqlite3  
+startup-notification  
+subversion  
+swig  
+swig-perl  
+swig-python  
+szip  
+t1lib  
+t1utils  
+tcl   +corefoundation +threads 
+tcp_wrappers  
+texi2html  
+texinfo  
+tiff  
+tk
+tkdiff  
+tradcpp  
+transfig  
+tree  
+twolame  
+txt2regex  
+uade2  
+unrar  
+unzip  
+urw-fonts  
+vala  
+virtualenv_select  
+vorbis-tools  
+vorbisgain  
+wavpack  
+wcslib  
+webkit-gtk3-2.0   +video 
+webp  
+wget  +ssl 
+wxWidgets-3.0  
+wxWidgets_select  
+x264  
+xbitmaps  
+xephem  
+xercesc  
+xfig  
+xmlcatmgr  
+xmlto  
+xmms  
+xmp  
+xpm  
+xrender  
+xv  
+xz  
+yasm  
+zenity  
+zlib  
+zmq  
