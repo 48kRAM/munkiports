@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# These are hard-coded for now. Could potentially determine them
+# from the installed MacPorts system.
+PBASE=/opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports
+RSYNC=rsync://rsync.macports.org/release/ports
+
+port="$1"
+if [ -z "$port" ]; then
+    echo "Usage: $0 <portname> [<category>]"
+    exit 1
+fi
+
+# Determine port category if not supplied
+if [ -z "$2" ]; then
+    cat=$(port info --category $port | awk '{ print $2 }' | sed -e 's/,$//')
+else
+    cat="$2"
+fi
+
+if ! [ -d "${PBASE}/${cat}" ]; then
+	echo "Invalid category '$cat' -- exiting!"
+	exit 1
+fi
+if ! [ -d "${PBASE}/${cat}/${port}" ]; then
+	echo "Invalid port '$port' -- exiting!"
+	exit 1
+fi
+
+echo "Updating port ${cat}/${port} from $RSYNC"
+rsync -a "${RSYNC}/${cat}/${port}/" "${PBASE}/${cat}/${port}/"
