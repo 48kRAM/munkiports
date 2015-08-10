@@ -3,7 +3,8 @@
 PORTSLIST='portslist'
 
 if [ -r "$PORTSLIST" ]; then
-    cat "$PORTSLIST" | while read portspec ; do
+    # Strip comments from the ports list
+    cat "$PORTSLIST" | sed -e '/^ *#/d' | while read portspec ; do
     	port install $portspec
 	if [ $? -ne 0 ] ; then
 	    echo "Error building port spec $portspec"
