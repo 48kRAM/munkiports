@@ -224,9 +224,9 @@ sub find_port_files ($) {
 sub print_help () {
 
     my $helptext = << "EOH";
-Usage: import-macports [options]
+Usage: import-macports -r /path/to/munki/repo [options]
 
-    -r|--repo		Path to munki repository
+    -r|--repo		Path to munki repository (top level)
     -p|--port		Import only this port (default is to import all active ports)
     -m|--manifest	Add imported ports to this manifest file (full path)
 
