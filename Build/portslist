@@ -2,7 +2,7 @@ ImageMagick  +x11
 dbus +startupitem 
 git  +credential_osxkeychain  +doc  +pcre  +perl5_16  +python27 
 alpine  +without_krb5  +without_tcl 
-aspell  +nonls -nls
+#aspell  +nonls -nls
 boost  +no_single  +no_static  +python27 
 curl  +ssl 
 cyrus-sasl2  +kerberos 

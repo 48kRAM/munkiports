@@ -21,6 +21,8 @@ GetOptions(
 $osversion=`sw_vers -productVersion`;
 chomp($osversion);
 @os_version=split(/\./, $osversion);
+$BASE=sprintf("ports%d%d", $os_version[0], $os_version[1]);
+printf("Port base is '%s'\n", $BASE) if ($DEBUG);
 
 # Safety checks for writing a manifest
 if ($manifest) {
@@ -49,9 +51,6 @@ if ($munki_repo) {
     die ("Error: Munki repo path must be specified with -r");
 }
 
-$BASE=sprintf("ports%d%d", $os_version[0], $os_version[1]);
-printf("Port base is '%s'\n", $BASE) if ($DEBUG);
-
 ## Check to repack only specific port
 if ($specific && $specific ne '') {
     print "Importing port $specific\n";
@@ -79,6 +78,8 @@ while (<PORTLIST>) {
     ($munkiname=$portname)=~s/-([0-9])/_\1/g;
 
     # Move on if munki already has this port
+    $pkginfo_file="$INFOS/$munkiname-$ver.plist";
+    printf("Checking for pkginfo %s...\n", $pkginfo_file) if ($DEBUG);
     if (-f "$INFOS/$munkiname-$ver.plist") {
 	print "INFO: pkg $portname seems to exist in munki already - skipping\n";
 	next;
