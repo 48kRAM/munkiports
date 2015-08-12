@@ -3,6 +3,15 @@ import-macports
 
 This is the script I use to import a large collection of MacPorts packages into the Munki software management system. It will gather a list of all active ports, build a pkg file for each one and import that pkg into your Munki repo. The 'testing' catalog is used for all packages -- you must change the catalogs yourself.
 
+## Usage
+```
+import-macports -r /path/to/repo [options]
+ 
+     -p|--port      Import only a specific port (default is to import all active ports)
+     -m|--manifest  Add imported ports to this manifest
+     -d|--debug     Print verbose debugging info
+```
+
 To use this script:
 
  * Designate one machine as your 'build machine' and install MacPorts on it. This machine must also have Xcode and the Xcode command line utilities installed.
