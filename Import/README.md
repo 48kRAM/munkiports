@@ -7,9 +7,9 @@ This is the script I use to import a large collection of MacPorts packages into 
 ```
 import-macports -r /path/to/repo [options]
  
-     -r|--repo      Path to mounted Munki repository (top level)
      -p|--port      Import only a specific port (default is to import all active ports)
      -m|--manifest  Add imported ports to this manifest
+     -d|--debug     Print verbose debugging info
 ```
 
 To use this script:
