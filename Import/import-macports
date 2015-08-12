@@ -12,7 +12,6 @@ $DEBUG=0;
 ## Check command line options
 
 GetOptions(
-    "repo|r=s"		=> \$munki_repo,
     "port|p=s"		=> \$specific,
     "manifest|m=s"	=> \$manifest,
     "debug|d"		=> \$DEBUG,
@@ -36,6 +35,8 @@ if (! -d $mi_repo) {
     printf("Error: Munki repo %s not found!\n", $mi_repo);
     print("Do you need to mount your Munki repo?\n");
     exit (1);
+} else {
+    $munki_repo=$mi_repo;
 }
 
 # Safety checks for writing a manifest
