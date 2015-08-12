@@ -416,6 +416,7 @@ unrar
 unzip  
 urw-fonts  
 vala  
+vim +x11 +gtk2 +python34
 virtualenv_select  
 vorbis-tools  
 vorbisgain  
