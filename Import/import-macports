@@ -24,6 +24,20 @@ chomp($osversion);
 $BASE=sprintf("ports%d%d", $os_version[0], $os_version[1]);
 printf("Port base is '%s'\n", $BASE) if ($DEBUG);
 
+# Read from munkiimport configuration
+$mi_repo=`defaults read com.googlecode.munki.munkiimport.plist repo_path 2>/dev/null`;
+chomp($mi_repo);
+if ($mi_repo eq '' ) {
+    print("Error: No Munki repo configured for munkiimport!\n");
+    print("You must run munkiimport --configure first.\n");
+    exit (1);
+}
+if (! -d $mi_repo) {
+    printf("Error: Munki repo %s not found!\n", $mi_repo);
+    print("Do you need to mount your Munki repo?\n");
+    exit (1);
+}
+
 # Safety checks for writing a manifest
 if ($manifest) {
     # Is the manifest a name or a file path?
@@ -43,12 +57,6 @@ if ($manifest) {
 	    die ("Unable to create new manifest $manifest_file!");
 	}
     }
-}
-if ($munki_repo) {
-    $INFOS="$munki_repo/pkgsinfo/$BASE";
-    $PKGS="$munki_repo/pkgs/$BASE";
-} else {
-    die ("Error: Munki repo path must be specified with -r");
 }
 
 ## Check to repack only specific port
