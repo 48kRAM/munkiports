@@ -16,6 +16,7 @@ To use this script:
 
  * Designate one machine as your 'build machine' and install MacPorts on it. This machine must also have Xcode and the Xcode command line utilities installed.
  * Build and install all ports that you wish to distrubute to your managed systems (see `Build/build-ports`).
+ * Configure MacPorts to build flat pkg files by adding the line `package.flat   yes` to your /opt/local/etc/macports/macports.conf file
  * Mount your Munki repo on this build machine
  * Configure munkiimport on the build machine (`munkiimport --configure`) so it knows where to import your packages
  * Run `import-macports` to import all active ports into your Munki repo
