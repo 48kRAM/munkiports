@@ -17,6 +17,7 @@ GetOptions(
     "manifest|m=s"	=> \$manifest,
     "debug|d"		=> \$DEBUG,
     "bundle-pkgs"	=> \$enable_bundle_pkgs,
+    "dry-run|n"		=> \$dryrun,
 ) or print_help();
 
 $osversion=`sw_vers -productVersion`;
@@ -65,6 +66,8 @@ if (! -d $mi_repo) {
     exit (1);
 } else {
     $munki_repo=$mi_repo;
+    $INFOS=sprintf("%s/pkgsinfo/%s", $munki_repo, $BASE);
+    printf ("Using pkginfos in %s\n", $INFOS) if ($DEBUG)
 }
 
 # Safety checks for writing a manifest
@@ -138,10 +141,11 @@ while (<PORTLIST>) {
     }
 
     print "$portname (v $ver)\n";
+    next if ($dryrun);
     $portwork=`port work $portname 2>/dev/null`;
     chomp($portwork);
     if (length($portwork)<2) {
-	# No workdir, so no pkg
+	# No workdir, so no pkg - might have been cleaned
 	$ret=build_port_pkg($portname, \@variants);
 	$portwork=`port work $portname 2>/dev/null`;
 	chomp($portwork);
