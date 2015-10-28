@@ -96,6 +96,7 @@ emacs
 enca  
 enchant  
 esound  
+exif
 expat  
 faac  
 faad2  
@@ -107,6 +108,7 @@ file
 findutils  
 flac  
 flex  
+fltk
 fontconfig  
 fop  
 fortune  
@@ -253,6 +255,7 @@ p5.16-xml-namespacesupport
 p5.16-xml-parser  
 p5.16-xml-sax-base  
 p5.16-xml-sax-writer  
+p5-image-exiftool
 p7zip  
 pango   +quartz  +x11 
 pangox-compat  
