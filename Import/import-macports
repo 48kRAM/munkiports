@@ -18,17 +18,45 @@ GetOptions(
     "debug|d"		=> \$DEBUG,
     "bundle-pkgs"	=> \$enable_bundle_pkgs,
     "dry-run|n"		=> \$dryrun,
+    "minimum_os_version=s"   => \$minosver,
+    "maximum_os_version=s"   => \$maxosver,
 ) or print_help();
 
-$osversion=`sw_vers -productVersion`;
-chomp($osversion);
-@os_version=split(/\./, $osversion);
-$BASE=sprintf("ports%d%d", $os_version[0], $os_version[1]);
+
+if ( !defined($minosver) ) {
+    # Assume minosver == running OS version
+    $osversion=`sw_vers -productVersion`;
+    chomp($osversion);
+    @os_version=split(/\./, $osversion);
+    $minosver=sprintf("%d.%d.0", $os_version[0], $os_version[1]);
+}
+if ( !defined($maxosver) ) {
+    # Unless we're told otherwise, assume highest patch level of
+    #  same semi-major version for maximum_os_version
+    @version_parts=split(/\./, $minosver);
+    if (scalar @version_parts < 2 ) {
+	# Bad minimum os version given or determined
+	die "Error: Illegal minimum_os_version\n";
+    } else {
+    	$maxosver=sprintf("%d.%d.99", $version_parts[0], $version_parts[1] );
+    }
+}
+printf("Minimum OS version is %s\n", $minosver) if ($DEBUG);
+printf("Maximum OS version is %s\n", $maxosver) if ($DEBUG);
+
+# Use the min OS version for ports directory base
+@version_parts=split(/\./, $minosver);
+if (scalar @version_parts < 2 ) {
+    # Bad minimum os version given or determined
+    die "Error: Illegal minimum_os_version\n";
+} else {
+    $BASE=sprintf("ports%d%d", $version_parts[0], $version_parts[1] );
+}
 printf("Port base is '%s'\n", $BASE) if ($DEBUG);
 
 # Read the macports configuration
 my %mpconfig=();
-open(MPCONF, "<$confbase/macports.conf") or die ("Can't read macports config file!\n");
+open(MPCONF, "<$confbase/macports.conf") or die ("Error: Can't read macports config file! Is Macports installed?\n");
 while (my $confline = <MPCONF>) {
     next unless ($confline =~/^[a-z]/);
     ($key, $value) = split(/\s+/, $confline);
@@ -158,10 +186,8 @@ while (<PORTLIST>) {
 	die("Can't build pkg for $portname!\n") if (length($portpkg)<2);
     }
 
-    $minver=sprintf("%d.%d.0", $os_version[0], $os_version[1]);
-    $maxver=sprintf("%d.%d.99", $os_version[0], $os_version[1]);
     $importargs="--name=$munkiname --pkgvers=$ver --subdirectory $BASE --unattended_install";
-    $importargs.=" --minimum_os_version=$minver --maximum_os_version=$maxver";
+    $importargs.=" --minimum_os_version=$minosver --maximum_os_version=$maxosver";
     foreach $dep (@libdeps, @rundeps) {
 	$dep=~s/-([0-9])/_\1/;
 	$importargs.=" -r $dep";
@@ -267,9 +293,11 @@ sub print_help () {
     my $helptext = << "EOH";
 Usage: import-macports [options]
 
-    -p|--port		Import only this port (default is to import all active ports)
-    -m|--manifest	Add imported ports to this manifest file (full path)
-    -d|--debug          Print verbose debugging info
+    -p|--port		  Import only this port (default is to import all active ports)
+    -m|--manifest  	  Add imported ports to this manifest file (full path)
+    -d|--debug            Print verbose debugging info
+    --minimum_os_version  Minimum OS version for the imported packages
+    --maximum_os_version  Maximum OS version for the imported packages
 
 EOH
     print ($helptext);
