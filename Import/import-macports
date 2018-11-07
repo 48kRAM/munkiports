@@ -81,7 +81,7 @@ EOH
 
 
 # Read from munkiimport configuration
-$mi_repo=`defaults read com.googlecode.munki.munkiimport.plist repo_path 2>/dev/null`;
+$mi_repo=`defaults read com.googlecode.munki.munkiimport.plist repo_url 2>/dev/null`;
 chomp($mi_repo);
 if ($mi_repo eq '' ) {
     print("Error: No Munki repo configured for munkiimport!\n");
